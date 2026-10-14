@@ -1,0 +1,21 @@
+{
+ "districts_with_nfhs5": 704,
+ "median_nfhs5": 73.7,
+ "share_below_50": 8.1,
+ "share_below_70": 41.8,
+ "share_90_plus": 6.4,
+ "n_below_50": 57,
+ "districts_both_rounds": 572,
+ "median_nfhs4": 46.2,
+ "median_gain_pp": 22.7,
+ "share_gained_20pp_plus": 59.1,
+ "share_declined": 3.5,
+ "phase2_districts": 363,
+ "phase2_median_nfhs5": 72.8,
+ "phase2_share_below_70": 44.1,
+ "phase2_share_below_50": 7.4,
+ "convergence_slope": -0.454,
+ "median_change_diarrhoea": -1.4,
+ "median_change_stunted": -3.4,
+ "median_change_underweight": -2.7
+}

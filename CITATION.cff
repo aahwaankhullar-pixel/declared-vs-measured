@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite it as below."
+title: "Declared vs. Measured: India's 'Open Defecation Free' Status and What the National Health Survey Found"
+authors:
+  - family-names: Khullar
+    given-names: Aahwaan
+    affiliation: "Shiv Nadar School, Faridabad, India"
+date-released: 2026-10-15
+type: software
+license: MIT
+repository-code: "https://github.com/aahwaankhullar-pixel/declared-vs-measured"
+keywords:
+  - Swachh Bharat Mission
+  - NFHS-5
+  - sanitation
+  - open defecation free
