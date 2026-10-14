@@ -1,5 +1,5 @@
 """Declared vs measured: Swachh Bharat 'open defecation free' status vs NFHS-5.
-Usage: python analysis.py data/nfhs_district_fact_sheets.csv <outdir>"""
+Usage: python analysis.py nfhs_district_fact_sheets.csv <outdir>"""
 import sys, os, json
 import numpy as np, pandas as pd
 import matplotlib; matplotlib.use("Agg")

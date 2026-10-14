@@ -16,7 +16,7 @@ By 2 October 2019, every Indian state had declared its rural areas open defecati
 
 - **Source:** the official NFHS-5 (2019–21) district fact sheets published by IIPS for the Ministry of Health and Family Welfare. Each sheet also reports the NFHS-4 (2015–16) value for the same district where one exists.
 - **Coverage:** 704 districts in 34 states and union territories. 572 districts have both rounds; most of the rest were created after 2015–16.
-- **Extraction:** values were read directly from the published PDFs with `code/extract_pdfs.py`. The PDFs come from the [SaiSiddhardhaKalla/NFHS](https://github.com/SaiSiddhardhaKalla/NFHS) archive. Cross-checked against two community CSV conversions ([pratapvardhan/NFHS-5](https://github.com/pratapvardhan/NFHS-5) and SaiSiddhardhaKalla/NFHS), the values agree for 98.8% of districts. The disagreements came from errors in the CSVs (for example, Delhi's districts shifted by one row), so the official PDFs are used throughout.
+- **Extraction:** values were read directly from the published PDFs with `extract_pdfs.py`. The PDFs come from the [SaiSiddhardhaKalla/NFHS](https://github.com/SaiSiddhardhaKalla/NFHS) archive. Cross-checked against two community CSV conversions ([pratapvardhan/NFHS-5](https://github.com/pratapvardhan/NFHS-5) and SaiSiddhardhaKalla/NFHS), the values agree for 98.8% of districts. The disagreements came from errors in the CSVs (for example, Delhi's districts shifted by one row), so the official PDFs are used throughout.
 - **Main measure:** "Population living in households that use an improved sanitation facility (%)". NFHS defines this as a flush or pour-flush toilet, ventilated or slab pit latrine, or twin-pit/composting toilet **that is not shared with another household**.
 - **Timing:** fieldwork in 13 states began in January 2020, entirely after the ODF declaration (dates as printed in each fact sheet). The other states were surveyed between June 2019 and February 2020.
 
@@ -24,14 +24,14 @@ By 2 October 2019, every Indian state had declared its rural areas open defecati
 
 ### 1. Measured sanitation is far from what "open defecation free" implies
 
-![District distribution](figures/fig1_district_distribution.png)
+![District distribution](fig1_district_distribution.png)
 
 - In the **median district, 74%** of people used an improved sanitation facility. That is well short of the near-universal use the ODF declaration implies.
 - **42% of districts were below 70%**, 57 districts (8%) were below 50%, and only 6% reached 90%.
 - The lowest was Puruliya, West Bengal, at 29%, followed by Bijapur (Chhattisgarh) and Araria (Bihar).
 - **The result does not depend on survey timing.** In the 363 districts surveyed entirely after the declaration, the median was 73% and 44% were below 70%.
 
-![States](figures/fig3_states.png)
+![States](fig3_states.png)
 
 The gap is uneven:
 - The median district is 99% in Kerala but 49% in Bihar, where 20 of 38 districts were below 50%.
@@ -39,7 +39,7 @@ The gap is uneven:
 
 ### 2. The progress was still real, and largest where it was most needed
 
-![Before and after](figures/fig2_before_after.png)
+![Before and after](fig2_before_after.png)
 
 - Between 2015–16 and 2019–21, the **median district gained 23 percentage points**, and the median coverage rose from 46% to 72%.
 - 59% of districts gained 20 points or more, and only 3.5% declined.
@@ -49,7 +49,7 @@ So the official claim overstates the result, but the independent data show a lar
 
 ### 3. Sanitation gains and child health: an association that does not survive controls
 
-![Health changes](figures/fig4_health_changes.png)
+![Health changes](fig4_health_changes.png)
 
 | Change in outcome (percentage points) per +10 pp gain in sanitation | No controls | With controls and state fixed effects |
 |---|---|---|
@@ -76,17 +76,18 @@ What the table shows:
 
 ## Reproduce it
 
-- **Google Colab:** open `declared_vs_measured.ipynb` and choose *Runtime → Run all*. The data file is fetched from this repository.
-- **Locally:** run `python code/analysis.py data/nfhs_district_fact_sheets.csv .`. It needs pandas, numpy and matplotlib; the regression and clustered standard errors are written out in plain NumPy so the method is visible.
-- **Re-extract from the PDFs:** run `python code/extract_pdfs.py <folder of fact-sheet PDFs> data/nfhs_district_fact_sheets.csv`.
+- **Google Colab:** open `declared_vs_measured.ipynb` and choose *Runtime → Run all*. The data file is fetched from this repository automatically.
+- **Locally:** run `python analysis.py nfhs_district_fact_sheets.csv .`. It needs pandas, numpy and matplotlib; the regression and clustered standard errors are written out in plain NumPy so the method is visible.
+- **Re-extract from the PDFs:** run `python extract_pdfs.py <folder of fact-sheet PDFs> nfhs_district_fact_sheets.csv`.
 
 ```
-data/nfhs_district_fact_sheets.csv   district values read from the official fact sheets
-code/extract_pdfs.py                 PDF → CSV extraction
-code/analysis.py                     full analysis (also run inside the notebook)
-declared_vs_measured.ipynb           notebook with outputs
-results/                             summary numbers, state table, regressions, district panel
-figures/                             the four charts above
+nfhs_district_fact_sheets.csv     district values read from the official fact sheets (input data)
+extract_pdfs.py                   PDF → CSV extraction
+analysis.py                       full analysis (also run inside the notebook)
+declared_vs_measured.ipynb        notebook with outputs
+summary.json, by_state.csv,       results: headline numbers, state table,
+regressions.csv, lowest_10_districts.csv, district_panel.csv    regressions, district panel
+fig1_… to fig4_….png              the four charts above
 ```
 
 ## References
